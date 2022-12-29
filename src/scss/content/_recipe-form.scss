@@ -2,18 +2,7 @@
 @use "base/mixins" as m;
 
 .recipe-form {
-  position: fixed;
-  top: -2rem;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-  background-color: rgb(0 0 0 / 0.6);
-  backdrop-filter: blur(0.5rem);
-  width: 100%;
-
-  place-content: center;
-  display: none;
+  @include m.absoluteItem;
 
   &.active {
     display: grid;
@@ -36,13 +25,7 @@
   }
 
   &__close {
-    cursor: pointer;
-    font-size: 5rem;
-    transition: all 0.3s;
-
-    &:hover {
-      transform: scale(1.1);
-    }
+    @include m.closeButton;
   }
 
   &__select {

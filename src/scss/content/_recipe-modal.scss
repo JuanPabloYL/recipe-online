@@ -1,0 +1,71 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.recipe-modal {
+  @include m.absoluteItem;
+  //display: grid;
+  display: none;
+
+  &.active {
+    display: grid;
+  }
+
+  &__box {
+    padding: 1rem;
+    width: 70%;
+    margin-inline: auto;
+    background-color: #fff;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  &__close {
+    @include m.closeButton;
+  }
+
+  &__content {
+    height: 30rem;
+    overflow-x: scroll;
+    line-height: 1.5;
+    font-size: 1.8rem;
+  }
+
+  &__list {
+    border: 1px solid v.$gray;
+  }
+
+  &__ingredient {
+    padding: 1rem;
+    border: 1px solid v.$gray;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 2rem;
+  }
+
+  &-btn {
+    @include m.button(v.$secondaryColor, v.$primaryColor);
+    padding: 1rem;
+    margin-block: 1rem;
+    font-size: 1.5rem;
+
+    &--delete {
+      background-color: v.$gray;
+      color: #333333;
+
+      &:hover {
+        box-shadow: 0.1rem -0.2rem 2rem rgba(v.$gray, 0.5);
+      }
+    }
+  }
+}

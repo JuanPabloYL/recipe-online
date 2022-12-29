@@ -3,3 +3,7 @@ export const navBarLinks = document.querySelector(".recipe-header__links");
 export const searchButton = document.querySelector("#search");
 export const recipeForm = document.querySelector(".recipe-form");
 export const closeFormButton = document.querySelector("#close");
+export const crossCloseRecipe = document.querySelector("#x-close");
+export const closeRecipeButton = document.querySelector("#close-recipe");
+export const viewRecipeButton = document.querySelector(".list__item button");
+export const recipeModal = document.querySelector(".recipe-modal");

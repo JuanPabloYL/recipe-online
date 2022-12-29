@@ -1,0 +1,23 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.list {
+  &__heading {
+    font-size: 3.5rem;
+    margin-block: 1rem;
+  }
+  &__item {
+    background-color: #fff;
+
+    h1 {
+      padding-inline: 1rem;
+    }
+
+    button {
+      @include m.button(v.$secondaryColor, v.$primaryColor);
+      @include m.desktop {
+        width: 100%;
+      }
+    }
+  }
+}

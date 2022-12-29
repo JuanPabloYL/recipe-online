@@ -1,23 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/app.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="build/css/app.css" />
     <title>Recipes Online</title>
-</head>
-<body>
-    <header class="recipe">
-        <nav class="recipe__header">
-            <div class="reciper__heading">
-                <p>Recipes</p>
-            </div>
-        </nav>
+    <script type="module" defer src="src/js/functions.js"></script>
+  </head>
+  <body>
+    <header class="recipe-header">
+      <nav class="recipe-header__nav container">
+        <div class="recipe-header__heading">
+          <a class="recipe-header__header">Recipes</a>
+        </div>
+        <a href="#" class="recipe-header__toggle">
+          <span class="recipe-header__bar"></span>
+          <span class="recipe-header__bar"></span>
+          <span class="recipe-header__bar"></span>
+        </a>
+        <ul class="recipe-header__links">
+          <li><a class="recipe-header__link" href="./index.html">Home</a></li>
+          <li>
+            <a class="recipe-header__link" href="./favorites.html">Favorites</a>
+          </li>
+        </ul>
+      </nav>
     </header>
-</body>
+
+    <main class="recipe container">
+      <h1 class="recipe__title">
+        Best <span class="recipe__title-span">Recipes </span>Online
+      </h1>
+      <p class="recipe__content">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
+        cumque laudantium modi nihil officiis recusandae sapiente soluta veniam
+        voluptate voluptates? Amet eos esse hic vitae? Assumenda fugit
+        repudiandae sed veritatis.
+      </p>
+      <button class="recipe__button">Search Recipe</button>
+    </main>
+
+    <section class="gallery">
+      <img src="./build/img/image_1.jpg" alt="dishes" />
+      <img src="./build/img/image_2.jpg" alt="dishes" /><img
+        src="./build/img/image_3.jpg"
+        alt="dishes"
+      />
+      <img src="./build/img/image_4.jpg" alt="dishes" />
+    </section>
+  </body>
 </html>

@@ -29,7 +29,7 @@ export const images = () =>
 
 export const watchFiles = () => {
   gulp.watch("src/scss/**/*.scss", css);
-  gulp.watch("src/images/**/*", images);
+  gulp.watch("src/img/**/*", images);
 };
 
 const build = gulp.series(images, css, watchFiles);

@@ -1,0 +1,45 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.recipe {
+  @include m.desktop {
+    width: 40%;
+    margin: 0 48% 0 auto;
+  }
+
+  &__title {
+    font-size: 3.7rem;
+    margin-block: 2rem;
+    font-size: 6rem;
+
+    @include m.desktop {
+      font-size: 10rem;
+    }
+
+    &-span {
+      color: v.$secondaryColor;
+      font-style: italic;
+      position: relative;
+      display: inline-block;
+      margin-left: -0.5rem;
+      &:after {
+        content: "";
+        width: 100%;
+        position: absolute;
+        height: 0.5rem;
+        display: block;
+        background-color: v.$secondaryColor;
+        bottom: 0;
+      }
+    }
+  }
+
+  &__content {
+    line-height: 1.5;
+    font-size: 2rem;
+  }
+
+  &__button {
+    @include m.button(v.$secondaryColor, v.$primaryColor);
+  }
+}

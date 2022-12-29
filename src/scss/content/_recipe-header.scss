@@ -1,0 +1,80 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.recipe-header {
+  &__nav {
+    padding-bottom: 0;
+    display: flex;
+
+    flex-direction: column;
+    align-items: flex-start;
+    margin-block: 2rem;
+    @include m.desktop {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__header {
+    cursor: pointer;
+    color: v.$secondaryColor;
+    font-weight: 700;
+
+    @include m.desktop {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+
+    @include m.desktop {
+      display: none;
+    }
+  }
+
+  &__bar {
+    height: 3px;
+    width: 100%;
+    background-color: #000;
+    border-radius: 10px;
+  }
+
+  &__links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0;
+
+    &.active {
+      display: flex;
+    }
+
+    @include m.desktop {
+      display: flex;
+      flex-direction: row;
+      width: auto;
+    }
+  }
+
+  &__link {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+
+    a {
+      width: 100%;
+      color: #000;
+      font-weight: 700;
+    }
+  }
+}

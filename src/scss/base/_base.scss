@@ -1,0 +1,37 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: v.$fontFamily;
+  font-size: v.$fontSize;
+  background-color: v.$primaryColor;
+}
+
+.container {
+  width: min(95%, 120rem);
+  margin-inline: auto;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  li {
+    list-style: none;
+
+    a {
+      text-decoration: none;
+      display: block;
+    }
+  }
+}

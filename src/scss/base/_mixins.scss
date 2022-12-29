@@ -1,0 +1,43 @@
+@use "variables" as v;
+
+@mixin mobile {
+  @media (min-width: v.$mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: v.$tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: v.$desktop) {
+    @content;
+  }
+}
+
+@mixin button($backgroundColor, $color) {
+  border: none;
+  background-color: $backgroundColor;
+  color: $color;
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  font-size: 1.8rem;
+  border-radius: 1rem;
+  transition: all 0.5s;
+  display: block;
+  width: 100%;
+
+  @include desktop {
+    width: auto;
+  }
+  &:hover {
+    box-shadow: 0.1rem -0.2rem 2rem rgba(v.$secondaryColor, 0.5);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}

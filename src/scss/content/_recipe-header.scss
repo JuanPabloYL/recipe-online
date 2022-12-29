@@ -71,10 +71,19 @@
     padding: 1rem 2rem;
     font-size: 2rem;
 
+    @include m.desktop {
+      &:hover {
+        box-shadow: rgba(254, 254, 254, 0.2) 0px 7px 29px 0px;
+      }
+    }
+
     a {
       width: 100%;
       color: #000;
       font-weight: 700;
+      @include m.desktop {
+        color: #fff;
+      }
     }
   }
 }

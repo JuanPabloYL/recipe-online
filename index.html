@@ -47,16 +47,54 @@
         voluptate voluptates? Amet eos esse hic vitae? Assumenda fugit
         repudiandae sed veritatis.
       </p>
-      <button class="recipe__button">Search Recipe</button>
+      <button id="search" class="recipe__button">Search Recipe</button>
+
+      <img class="recipe__img" src="./build/img/image_6.jpg" alt="" />
     </main>
 
-    <section class="gallery">
+    <section class="gallery section">
       <img src="./build/img/image_1.jpg" alt="dishes" />
-      <img src="./build/img/image_2.jpg" alt="dishes" /><img
-        src="./build/img/image_3.jpg"
-        alt="dishes"
-      />
+      <img src="./build/img/image_2.jpg" alt="dishes" />
+      <img src="./build/img/image_3.jpg" alt="dishes" />
       <img src="./build/img/image_4.jpg" alt="dishes" />
+    </section>
+
+    <section class="recipe-form">
+      <form class="form">
+        <div class="form__header">
+          <p class="form__title">Choose Category</p>
+          <span id="close" class="form__close">&#215;</span>
+        </div>
+        <select class="form__select">
+          <option selected disabled value="">Choose a category</option>
+          <option value="">Chicekn</option>
+          <option value="">Meat</option>
+          <option value="">Rice</option>
+          <option value="">Chinese</option>
+        </select>
+      </form>
+    </section>
+
+    <section class="list container">
+      <form class="form">
+        <div class="form__header">
+          <p class="form__title">Choose Category</p>
+        </div>
+        <select class="form__select">
+          <option selected disabled value="">Choose a category</option>
+          <option value="">Chicekn</option>
+          <option value="">Meat</option>
+          <option value="">Rice</option>
+          <option value="">Chinese</option>
+        </select>
+      </form>
+      <h4 class="list__heading">Results</h4>
+
+      <div class="list-items">
+        <div class="list__item">
+          <img src="./build/img/image_1.jpg" alt="test" />
+        </div>
+      </div>
     </section>
   </body>
 </html>

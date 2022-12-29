@@ -2,6 +2,7 @@
 @use "base/mixins" as m;
 
 .recipe {
+  position: relative;
   @include m.desktop {
     width: 40%;
     margin: 0 48% 0 auto;
@@ -11,6 +12,10 @@
     font-size: 3.7rem;
     margin-block: 2rem;
     font-size: 6rem;
+
+    @include m.tablet {
+      font-size: 8rem;
+    }
 
     @include m.desktop {
       font-size: 10rem;
@@ -37,9 +42,26 @@
   &__content {
     line-height: 1.5;
     font-size: 2rem;
+
+    @include m.tablet {
+      font-size: 2.5rem;
+    }
   }
 
   &__button {
     @include m.button(v.$secondaryColor, v.$primaryColor);
+  }
+
+  &__img {
+    display: none;
+
+    @include m.desktop {
+      position: absolute;
+      display: inline-block;
+      right: -100%;
+      top: -10rem;
+      height: 120%;
+      z-index: -1;
+    }
   }
 }

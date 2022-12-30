@@ -147,16 +147,10 @@ export function startApp() {
 
     modalBodyIngredients.appendChild(listGroup);
 
-    //Close/Add buttons
-    // const addButton = document.querySelector(".recipe-modal-btn--add");
-    // const closeButton = document.querySelector(".recipe-modal-btn--delete");
-    // addButton.addEventListener("click", () => {
-    //   if (!existStorage(idMeal)) {
-    //     addButton.textContent = "Delete Favorite";
-    //   } else {
-    //     addButton.textContent = "Add Favorite";
-    //   }
-    // });
+    const buttonContainer = document.querySelector(".recipe-modal__buttons");
+
+    cleanHTML(buttonContainer);
+
     const addButton = document.createElement("BUTTON");
     addButton.classList.add("recipe-modal-btn", "recipe-modal-btn--add");
     addButton.textContent = existStorage(idMeal)
@@ -165,14 +159,25 @@ export function startApp() {
 
     const closeButton = document.createElement("BUTTON");
     closeButton.classList.add("recipe-modal-btn", "recipe-modal-btn--delete");
+    closeButton.textContent = "Close";
+    closeButton.onclick = function () {
+      toggleClass(false, recipeModal, "active");
+    };
+
+    buttonContainer.appendChild(addButton);
+    buttonContainer.appendChild(closeButton);
 
     //   Local storage
     addButton.onclick = () => {
       if (existStorage(idMeal)) {
         deleteFavorite(idMeal);
+        addButton.textContent = "Save Favorite";
+        showAlert("Deleted Correctly", false);
         return;
       }
       addFavorite({ id: idMeal, title: strMeal, img: strMealThumb });
+      addButton.textContent = "Delete Favorite";
+      showAlert("Added Correctly", true);
     };
   }
 
@@ -190,6 +195,31 @@ export function startApp() {
   function existStorage(id) {
     const favorites = JSON.parse(localStorage.getItem("favorites")) ?? [];
     return favorites.some((favorite) => favorite.id === id);
+  }
+
+  function showAlert(msg, added) {
+    const alertBody = document.querySelector("#alert");
+    const alertContent = document.querySelector(".alert__box");
+    const closeAlert = document.querySelector(".alert__box span");
+    closeAlert.onclick = () => alertBody.classList.remove("active");
+    if (added) {
+      alertContent.classList.add("success");
+      alertContent.classList.remove("deleted");
+    } else {
+      alertContent.classList.add("deleted");
+      alertContent.classList.remove("success");
+    }
+
+    const alertImg = document.querySelector(".alert__box img");
+    alertImg.src = added ? "build/img/ok.png" : "build/img/no-entry.png";
+
+    const alertText = document.querySelector(".alert__box p");
+    alertText.textContent = added ? "Added Correctly" : "Deleted Correctly";
+
+    alertBody.classList.add("active");
+    setTimeout(() => {
+      alertBody.classList.remove("active");
+    }, 1000);
   }
 
   function cleanHTML(selector) {

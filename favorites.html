@@ -13,18 +13,27 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="build/css/app.css" />
     <title>Recipes Online</title>
   </head>
   <body>
-    <header class="recipe">
-      <nav class="recipe__nav">
-        <div class="recipe__heading">
-          <h3 class="recipe__header">Recipes</h3>
+    <header class="recipe-header">
+      <nav class="recipe-header__nav container">
+        <div class="recipe-header__heading">
+          <a href="./index.html" class="recipe-header__header">Recipes</a>
         </div>
-
-        <ul class="recipe__ul">
-          <li class="recipe"><a href="./index.html">Home</a></li>
-          <li><a href="./favorites.html">Favorites</a></li>
+        <a href="#" class="recipe-header__toggle">
+          <span class="recipe-header__bar"></span>
+          <span class="recipe-header__bar"></span>
+          <span class="recipe-header__bar"></span>
+        </a>
+        <ul class="recipe-header__links favorites">
+          <li>
+            <a class="recipe-header__link" href="./index.html">Home</a>
+          </li>
+          <li>
+            <a class="recipe-header__link" href="./favorites.html">Favorites</a>
+          </li>
         </ul>
       </nav>
     </header>

@@ -1,0 +1,52 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.alert {
+  position: fixed;
+  top: 2rem;
+  right: 1rem;
+  opacity: 0;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  @include m.keyframes(slide) {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 50%;
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @include m.animate(slide, 300ms, ease-in, forwards);
+
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+
+    &.success {
+      background-color: rgb(81 207 102 / 0.5);
+    }
+
+    &.deleted {
+      background-color: rgb(240 42 42 / 0.5);
+    }
+
+    span {
+      @include m.closeButton;
+      font-size: 3rem;
+    }
+  }
+}

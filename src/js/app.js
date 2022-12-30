@@ -1,7 +1,7 @@
 import { startApp, toggleClass } from "./functions.js";
 import {
   closeFormButton,
-  closeRecipeButton,
+  // closeRecipeButton,
   crossCloseRecipe,
   navBarLinks,
   recipeForm,
@@ -29,9 +29,9 @@ crossCloseRecipe.addEventListener("click", () => {
   toggleClass(false, recipeModal, "active");
 });
 
-closeRecipeButton.addEventListener("click", () => {
-  // recipeModal.classList.remove("active");
-  toggleClass(false, recipeModal, "active");
-});
+// closeRecipeButton.addEventListener("click", () => {
+//   // recipeModal.classList.remove("active");
+//   toggleClass(false, recipeModal, "active");
+// });
 
 document.addEventListener("DOMContentLoaded", startApp);

@@ -4,6 +4,10 @@
 .recipe-form {
   @include m.absoluteItem;
 
+  &.hidden {
+    display: none;
+  }
+
   &.active {
     display: grid;
   }

@@ -23,7 +23,9 @@ body {
   width: min(95%, 120rem);
   margin-inline: auto;
 }
-
+a {
+  text-decoration: none;
+}
 ul {
   margin: 0;
   padding: 0;
@@ -31,13 +33,15 @@ ul {
     list-style: none;
 
     a {
-      text-decoration: none;
       display: block;
       &:visited,
       &:link {
         color: #000;
         @include m.desktop {
           color: #fff;
+          &.active {
+            color: #000;
+          }
         }
       }
     }

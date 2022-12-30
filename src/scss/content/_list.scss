@@ -2,14 +2,25 @@
 @use "base/mixins" as m;
 
 .list {
+  margin-bottom: 3rem;
+  &.hidden {
+    display: none;
+  }
   &__heading {
     font-size: 3.5rem;
     margin-block: 1rem;
   }
   &__item {
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    img {
+      height: 30rem;
+      object-fit: cover;
+    }
 
-    h1 {
+    h3 {
       padding-inline: 1rem;
     }
 

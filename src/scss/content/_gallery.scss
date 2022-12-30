@@ -7,6 +7,10 @@
   align-items: center;
   width: 100%;
 
+  &.hidden {
+    display: none;
+  }
+
   @include m.tablet {
     flex-direction: row;
   }

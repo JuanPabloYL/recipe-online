@@ -3,7 +3,6 @@
 
 .recipe-modal {
   @include m.absoluteItem;
-  //display: grid;
   display: none;
 
   &.active {
@@ -12,9 +11,17 @@
 
   &__box {
     padding: 1rem;
-    width: 70%;
+    width: 35rem;
     margin-inline: auto;
     background-color: #fff;
+
+    @include m.tablet {
+      width: 65rem;
+    }
+
+    @include m.desktop {
+      width: 95rem;
+    }
   }
 
   &__header {
@@ -37,6 +44,11 @@
     overflow-x: scroll;
     line-height: 1.5;
     font-size: 1.8rem;
+  }
+
+  &__img {
+    width: 100%;
+    object-fit: cover;
   }
 
   &__list {

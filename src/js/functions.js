@@ -4,7 +4,7 @@ import {
   recipeContainer,
   galleryContainer,
   headerLinks,
-  recipeForm,
+  recipeModal,
 } from "./nodes.js";
 
 export function toggleClass(state, element, style) {
@@ -22,6 +22,8 @@ function activeHeaderLinks() {
 export function startApp() {
   const selectCategories = document.querySelector("#categories");
   selectCategories.addEventListener("change", selectCategory);
+  const recipeForm = document.querySelector("#recipe-form-search");
+  recipeForm.addEventListener("change", selectCategory);
 
   obtainCategories();
 
@@ -31,20 +33,21 @@ export function startApp() {
         "https://www.themealdb.com/api/json/v1/1/categories.php"
       );
       const data = await url.json();
-      showCategories(data.categories);
+      showCategories(data.categories, selectCategories);
+      showCategories(data.categories, recipeForm);
     } catch (error) {
       console.log(error);
     }
   }
 
-  function showCategories(categories = []) {
+  function showCategories(categories = [], element) {
     categories.forEach((category) => {
       const { strCategory } = category;
       const option = document.createElement("OPTION");
       option.value = strCategory;
       option.textContent = strCategory;
 
-      selectCategories.appendChild(option);
+      element.appendChild(option);
     });
   }
 
@@ -55,6 +58,7 @@ export function startApp() {
         `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
       );
       const response = await url.json();
+      console.log(response);
       showRecipe(response.meals);
     } catch (error) {
       console.log(error);
@@ -62,8 +66,13 @@ export function startApp() {
   }
 
   function showRecipe(recipes = []) {
+    cleanHTML(listRecipes);
+
+    const heading = document.querySelector(".list__heading");
+    heading.textContent = recipes.length ? "Results" : "No results found";
     //   Iterate on the results
     recipes.forEach((recipe) => {
+      const recipeForm = document.querySelector(".recipe-form");
       listContainer.classList.remove("hidden");
       recipeContainer.classList.add("hidden");
       galleryContainer.classList.add("hidden");
@@ -83,6 +92,9 @@ export function startApp() {
 
       const recipeButton = document.createElement("BUTTON");
       recipeButton.textContent = "View Recipe";
+      recipeButton.onclick = function () {
+        selectRecipe(idMeal);
+      };
 
       // Inyectar en el codigo HTML
       recipeCard.appendChild(recipeImage);
@@ -91,5 +103,54 @@ export function startApp() {
 
       listRecipes.appendChild(recipeCard);
     });
+  }
+
+  async function selectRecipe(id) {
+    const url = `https://themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+    const data = await fetch(url);
+    const response = await data.json();
+    showModalRecipe(response.meals[0]);
+  }
+
+  function showModalRecipe(recipe) {
+    console.log(recipe);
+    const { idMeal, strInstructions, strMeal, strMealThumb } = recipe;
+    recipeModal.classList.add("active");
+
+    // Añadir contenido al modal
+    const modalBodyIngredients = document.querySelector(
+      ".recipe-modal__ingredients"
+    );
+    const modalTitle = document.querySelector(".recipe-modal__title");
+    const modalImg = document.querySelector(".recipe-modal__img");
+    const modalText = document.querySelector(".recipe-modal__content p");
+
+    modalTitle.textContent = strMeal;
+    modalImg.src = strMealThumb;
+    modalText.textContent = strInstructions;
+
+    const listGroup = document.createElement("UL");
+    listGroup.classList.add("recipe-modal__list");
+    //   Show ingredients
+    for (let i = 1; i <= 20; i++) {
+      if (recipe[`strIngredient${i}`]) {
+        const ingredient = recipe[`strIngredient${i}`];
+        const amount = recipe[`strMeasure${i}`];
+
+        const ingredientLi = document.createElement("LI");
+        ingredientLi.classList.add("recipe-modal__ingredient");
+        ingredientLi.textContent = `${ingredient} - ${amount}`;
+
+        listGroup.appendChild(ingredientLi);
+      }
+    }
+
+    modalBodyIngredients.appendChild(listGroup);
+  }
+
+  function cleanHTML(selector) {
+    while (selector.firstChild) {
+      selector.removeChild(selector.firstChild);
+    }
   }
 }

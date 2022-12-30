@@ -18,10 +18,6 @@
     @include m.tablet {
       width: 65rem;
     }
-
-    @include m.desktop {
-      width: 95rem;
-    }
   }
 
   &__header {

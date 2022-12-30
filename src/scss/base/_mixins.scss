@@ -61,9 +61,6 @@
   display: block;
   width: 100%;
 
-  @include desktop {
-    width: auto;
-  }
   &:hover {
     box-shadow: 0.1rem -0.2rem 2rem rgba(v.$secondaryColor, 0.5);
   }

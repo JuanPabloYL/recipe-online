@@ -146,6 +146,50 @@ export function startApp() {
     }
 
     modalBodyIngredients.appendChild(listGroup);
+
+    //Close/Add buttons
+    // const addButton = document.querySelector(".recipe-modal-btn--add");
+    // const closeButton = document.querySelector(".recipe-modal-btn--delete");
+    // addButton.addEventListener("click", () => {
+    //   if (!existStorage(idMeal)) {
+    //     addButton.textContent = "Delete Favorite";
+    //   } else {
+    //     addButton.textContent = "Add Favorite";
+    //   }
+    // });
+    const addButton = document.createElement("BUTTON");
+    addButton.classList.add("recipe-modal-btn", "recipe-modal-btn--add");
+    addButton.textContent = existStorage(idMeal)
+      ? "Delete Favorite"
+      : "Add Favorite";
+
+    const closeButton = document.createElement("BUTTON");
+    closeButton.classList.add("recipe-modal-btn", "recipe-modal-btn--delete");
+
+    //   Local storage
+    addButton.onclick = () => {
+      if (existStorage(idMeal)) {
+        deleteFavorite(idMeal);
+        return;
+      }
+      addFavorite({ id: idMeal, title: strMeal, img: strMealThumb });
+    };
+  }
+
+  function addFavorite(recipe) {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) ?? [];
+    localStorage.setItem("favorites", JSON.stringify([...favorites, recipe]));
+  }
+
+  function deleteFavorite(id) {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) ?? [];
+    const newFavorites = favorites.filter((favorite) => favorite.id !== id);
+    localStorage.setItem("favorites", JSON.stringify(newFavorites));
+  }
+
+  function existStorage(id) {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) ?? [];
+    return favorites.some((favorite) => favorite.id === id);
   }
 
   function cleanHTML(selector) {

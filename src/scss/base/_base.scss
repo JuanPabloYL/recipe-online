@@ -17,6 +17,10 @@ body {
   font-size: v.$fontSize;
   background-color: v.$primaryColor;
   position: relative;
+
+  &.fixed {
+    overflow: hidden;
+  }
 }
 
 .container {

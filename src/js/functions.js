@@ -64,6 +64,7 @@ export function startApp() {
 
   async function selectCategory(e) {
     try {
+      document.querySelector("body").classList.remove("fixed");
       const category = e.target.value;
       const url = await fetch(
         `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
@@ -103,6 +104,7 @@ export function startApp() {
       const recipeButton = document.createElement("BUTTON");
       recipeButton.textContent = "View Recipe";
       recipeButton.onclick = function () {
+        document.querySelector("body").classList.add("fixed");
         selectRecipe(idMeal);
       };
 
@@ -159,7 +161,6 @@ export function startApp() {
   }
 
   function showModalRecipe(recipe) {
-    console.log(recipe);
     const { idMeal, strInstructions, strMeal, strMealThumb } = recipe;
     recipeModal.classList.add("active");
 
@@ -207,6 +208,7 @@ export function startApp() {
     closeButton.classList.add("recipe-modal-btn", "recipe-modal-btn--delete");
     closeButton.textContent = "Close";
     closeButton.onclick = function () {
+      document.querySelector("body").classList.remove("fixed");
       toggleClass(false, recipeModal, "active");
     };
 

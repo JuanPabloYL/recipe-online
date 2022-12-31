@@ -1,7 +1,6 @@
 import { startApp, toggleClass } from "./functions.js";
 import {
   closeFormButton,
-  // closeRecipeButton,
   crossCloseRecipe,
   navBarLinks,
   recipeForm,
@@ -16,26 +15,21 @@ toggleBtnNav.addEventListener("click", () => {
 
 if (searchButton) {
   searchButton.addEventListener("click", () => {
-    // recipeForm.classList.add("active");
+    document.querySelector("body").classList.add("fixed");
     toggleClass(true, recipeForm, "active");
   });
 }
 
 if (recipeForm) {
   closeFormButton.addEventListener("click", () => {
-    // recipeForm.classList.remove("active");
+    document.querySelector("body").classList.remove("fixed");
     toggleClass(false, recipeForm, "active");
   });
 }
 
 crossCloseRecipe.addEventListener("click", () => {
-  // recipeModal.classList.remove("active");
+  document.querySelector("body").classList.remove("fixed");
   toggleClass(false, recipeModal, "active");
 });
-
-// closeRecipeButton.addEventListener("click", () => {
-//   // recipeModal.classList.remove("active");
-//   toggleClass(false, recipeModal, "active");
-// });
 
 document.addEventListener("DOMContentLoaded", startApp);

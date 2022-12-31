@@ -41,8 +41,10 @@ ul {
       &:visited,
       &:link {
         color: #000;
+
         @include m.desktop {
           color: #fff;
+
           &.active {
             color: #000;
           }

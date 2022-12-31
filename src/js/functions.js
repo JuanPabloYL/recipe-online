@@ -108,7 +108,7 @@ export function startApp() {
         selectRecipe(idMeal);
       };
 
-      // Inyectar en el codigo HTML
+      // Add HTML code
       recipeCard.appendChild(recipeImage);
       recipeCard.appendChild(recipeHeading);
       recipeCard.appendChild(recipeButton);
@@ -144,7 +144,7 @@ export function startApp() {
         selectRecipe(idMeal ?? recipe.id);
       };
 
-      // Inyectar en el codigo HTML
+      // Add HTML code
       recipeCard.appendChild(recipeImage);
       recipeCard.appendChild(recipeHeading);
       recipeCard.appendChild(recipeButton);
@@ -164,7 +164,7 @@ export function startApp() {
     const { idMeal, strInstructions, strMeal, strMealThumb } = recipe;
     recipeModal.classList.add("active");
 
-    // Añadir contenido al modal
+    // Add content to modal
     const modalBodyIngredients = document.querySelector(
       ".recipe-modal__ingredients"
     );

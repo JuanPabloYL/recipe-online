@@ -69,7 +69,6 @@ export function startApp() {
         `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
       );
       const response = await url.json();
-      console.log(response);
       showRecipe(response.meals);
     } catch (error) {
       console.log(error);

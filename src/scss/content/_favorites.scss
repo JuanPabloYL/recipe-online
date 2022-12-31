@@ -1,0 +1,11 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.favorite {
+  &__link {
+    transition: box-shadow 0.3s;
+    &:hover {
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+  }
+}

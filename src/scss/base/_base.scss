@@ -42,6 +42,9 @@ ul {
           &.active {
             color: #000;
           }
+          &.current {
+            color: v.$secondaryColor;
+          }
         }
       }
     }

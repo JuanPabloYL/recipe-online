@@ -26,15 +26,17 @@ export function startApp() {
     selectCategories.addEventListener("change", selectCategory);
     obtainCategories();
   }
+
   const recipeForm = document.querySelector("#recipe-form-search");
-  recipeForm.addEventListener("change", selectCategory);
+
+  if (recipeForm) {
+    recipeForm.addEventListener("change", selectCategory);
+  }
 
   const favoritesDiv = document.querySelector(".favorites");
   if (favoritesDiv) {
     getFavorites();
   }
-
-  // const result = document.querySelector("#results");
 
   async function obtainCategories() {
     try {
@@ -121,9 +123,7 @@ export function startApp() {
     heading.textContent = recipes.length ? "Results" : "No results found";
     //   Iterate on the results
     recipes.forEach((recipe) => {
-      const recipeForm = document.querySelector(".recipe-form");
       listContainer.classList.remove("hidden");
-      recipeForm.classList.remove("active");
       activeHeaderLinks();
       const { idMeal, strMeal, strMealThumb } = recipe;
 
@@ -278,7 +278,8 @@ export function startApp() {
 
     const noFavorites = document.createElement("P");
     noFavorites.textContent = "No favorites yet";
-    // result.appendChild(noFavorites);
+    noFavorites.classList.add("no-favorites");
+    document.body.appendChild(noFavorites);
   }
 
   function cleanHTML(selector) {

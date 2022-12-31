@@ -21,10 +21,12 @@ if (searchButton) {
   });
 }
 
-closeFormButton.addEventListener("click", () => {
-  // recipeForm.classList.remove("active");
-  toggleClass(false, recipeForm, "active");
-});
+if (recipeForm) {
+  closeFormButton.addEventListener("click", () => {
+    // recipeForm.classList.remove("active");
+    toggleClass(false, recipeForm, "active");
+  });
+}
 
 crossCloseRecipe.addEventListener("click", () => {
   // recipeModal.classList.remove("active");

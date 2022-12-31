@@ -15,6 +15,7 @@
     />
     <link rel="stylesheet" href="build/css/app.css" />
     <title>Recipes Online</title>
+    <script type="module" defer src="src/js/app.js"></script>
   </head>
   <body>
     <header class="recipe-header">
@@ -27,7 +28,7 @@
           <span class="recipe-header__bar"></span>
           <span class="recipe-header__bar"></span>
         </a>
-        <ul class="recipe-header__links favorites">
+        <ul class="recipe-header__links">
           <li>
             <a class="recipe-header__link" href="./index.html">Home</a>
           </li>
@@ -37,5 +38,95 @@
         </ul>
       </nav>
     </header>
+
+    <!--    <main class="recipe container">-->
+    <!--      <h1 class="recipe__title">-->
+    <!--        Best <span class="recipe__title-span">Recipes </span>Online-->
+    <!--      </h1>-->
+    <!--      <p class="recipe__content">-->
+    <!--        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto-->
+    <!--        cumque laudantium modi nihil officiis recusandae sapiente soluta veniam-->
+    <!--        voluptate voluptates? Amet eos esse hic vitae? Assumenda fugit-->
+    <!--        repudiandae sed veritatis.-->
+    <!--      </p>-->
+    <!--      <button id="search" class="recipe__button">Search Recipe</button>-->
+
+    <!--      <img class="recipe__img" src="./build/img/image_6.jpg" alt="" />-->
+    <!--    </main>-->
+
+    <section class="recipe-form">
+      <form class="form">
+        <div class="form__header">
+          <p class="form__title">Choose Category</p>
+          <span id="close" class="form__close">&#215;</span>
+        </div>
+        <select id="categories" class="form__select">
+          <option selected disabled value="">-- Choose a category --</option>
+        </select>
+      </form>
+    </section>
+
+    <section class="list container hidden">
+      <form class="form">
+        <div class="form__header">
+          <p class="form__title">Choose Category</p>
+        </div>
+        <select class="form__select" id="recipe-form-search">
+          <option selected disabled value="">Choose a category</option>
+        </select>
+      </form>
+      <h4 class="list__heading">Results</h4>
+
+      <div class="list-items favorites" id="results"></div>
+    </section>
+
+    <section class="recipe-modal">
+      <div class="recipe-modal__box">
+        <div class="recipe-modal__header">
+          <h3 class="recipe-modal__title"></h3>
+          <span class="recipe-modal__close" id="x-close">&#215;</span>
+        </div>
+        <div class="recipe-modal__content">
+          <img class="recipe-modal__img" />
+          <h3>Instructions</h3>
+          <p></p>
+
+          <div class="recipe-modal__ingredients">
+            <h3>Ingredients and amounts</h3>
+            <!--            <ul class="recipe-modal__list">-->
+            <!--              <li class="recipe-modal__ingredient">-->
+            <!--                <span></span>-->
+            <!--              </li>-->
+            <!--              <li class="recipe-modal__ingredient">-->
+            <!--                <span></span>-->
+            <!--              </li>-->
+            <!--              <li class="recipe-modal__ingredient">-->
+            <!--                <span></span>-->
+            <!--              </li>-->
+            <!--            </ul>-->
+          </div>
+        </div>
+
+        <div class="recipe-modal__buttons">
+          <!--          <button class="recipe-modal-btn recipe-modal-btn&#45;&#45;add">-->
+          <!--            Save favorite-->
+          <!--          </button>-->
+          <!--          <button-->
+          <!--            class="recipe-modal-btn recipe-modal-btn&#45;&#45;delete"-->
+          <!--            id="close-recipe"-->
+          <!--          >-->
+          <!--            Close-->
+          <!--          </button>-->
+        </div>
+      </div>
+    </section>
+
+    <div class="alert" id="alert">
+      <div class="alert__box">
+        <img src="build/img/no-entry.png" alt="success" />
+        <p>Deleted Correctly</p>
+        <span>&#88;</span>
+      </div>
+    </div>
   </body>
 </html>

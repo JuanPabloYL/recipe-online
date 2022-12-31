@@ -14,10 +14,12 @@ toggleBtnNav.addEventListener("click", () => {
   navBarLinks.classList.toggle("active");
 });
 
-searchButton.addEventListener("click", () => {
-  // recipeForm.classList.add("active");
-  toggleClass(true, recipeForm, "active");
-});
+if (searchButton) {
+  searchButton.addEventListener("click", () => {
+    // recipeForm.classList.add("active");
+    toggleClass(true, recipeForm, "active");
+  });
+}
 
 closeFormButton.addEventListener("click", () => {
   // recipeForm.classList.remove("active");

@@ -21,11 +21,20 @@ function activeHeaderLinks() {
 
 export function startApp() {
   const selectCategories = document.querySelector("#categories");
-  selectCategories.addEventListener("change", selectCategory);
+
+  if (selectCategories) {
+    selectCategories.addEventListener("change", selectCategory);
+    obtainCategories();
+  }
   const recipeForm = document.querySelector("#recipe-form-search");
   recipeForm.addEventListener("change", selectCategory);
 
-  obtainCategories();
+  const favoritesDiv = document.querySelector(".favorites");
+  if (favoritesDiv) {
+    getFavorites();
+  }
+
+  // const result = document.querySelector("#results");
 
   async function obtainCategories() {
     try {
@@ -94,6 +103,44 @@ export function startApp() {
       recipeButton.textContent = "View Recipe";
       recipeButton.onclick = function () {
         selectRecipe(idMeal);
+      };
+
+      // Inyectar en el codigo HTML
+      recipeCard.appendChild(recipeImage);
+      recipeCard.appendChild(recipeHeading);
+      recipeCard.appendChild(recipeButton);
+
+      listRecipes.appendChild(recipeCard);
+    });
+  }
+
+  function showRecipeFavorites(recipes = []) {
+    cleanHTML(listRecipes);
+
+    const heading = document.querySelector(".list__heading");
+    heading.textContent = recipes.length ? "Results" : "No results found";
+    //   Iterate on the results
+    recipes.forEach((recipe) => {
+      const recipeForm = document.querySelector(".recipe-form");
+      listContainer.classList.remove("hidden");
+      recipeForm.classList.remove("active");
+      activeHeaderLinks();
+      const { idMeal, strMeal, strMealThumb } = recipe;
+
+      const recipeCard = document.createElement("DIV");
+      recipeCard.classList.add("list__item");
+
+      const recipeImage = document.createElement("IMG");
+      recipeImage.alt = `Recipe image ${strMeal}`;
+      recipeImage.src = strMealThumb ?? recipe.img;
+
+      const recipeHeading = document.createElement("H3");
+      recipeHeading.textContent = strMeal ?? recipe.title;
+
+      const recipeButton = document.createElement("BUTTON");
+      recipeButton.textContent = "View Recipe";
+      recipeButton.onclick = function () {
+        selectRecipe(idMeal ?? recipe.id);
       };
 
       // Inyectar en el codigo HTML
@@ -219,7 +266,19 @@ export function startApp() {
     alertBody.classList.add("active");
     setTimeout(() => {
       alertBody.classList.remove("active");
-    }, 1000);
+    }, 700);
+  }
+
+  function getFavorites() {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) ?? [];
+    if (favorites.length) {
+      showRecipeFavorites(favorites);
+      return;
+    }
+
+    const noFavorites = document.createElement("P");
+    noFavorites.textContent = "No favorites yet";
+    // result.appendChild(noFavorites);
   }
 
   function cleanHTML(selector) {
